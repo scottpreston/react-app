@@ -45,6 +45,6 @@
     "prestart" : "npm run pack",
     "pack": "webpack", 
     "test": "babel-node node_modules/mocha/bin/_mocha -- test/**/*.js",
-    "cover": "$(npm bin)/nyc --reporter=html --require babel-register --require babel-polyfill mocha -- test/**/*.js"
+    "cover": "nyc --reporter=html --require babel-register --require babel-polyfill mocha -- test/**/*.js"
   }
 }
