@@ -5,6 +5,8 @@ import AppContainer from './src/containers/AppContainer';
 import reducer from './src/reducers';
 import {Provider} from 'react-redux';
 import { Router, Route, browserHistory, Link , IndexRoute} from 'react-router';
+import jquery from 'jquery';
+import bootstrapjs from 'bootstrap/dist/js/bootstrap.js';
 
 const store = createStore(reducer);
 

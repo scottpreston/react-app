@@ -11,20 +11,24 @@
     "babel-preset-react": "^6.23.0",
     "bootstrap": "^3.3.7",
     "chai": "^3.5.0",
+    "classnames": "^2.2.5",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.15.0",
+    "file-loader": "^0.10.1",
     "jquery": "^3.1.1",
     "mocha": "^3.2.0",
     "nyc": "^10.1.2",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.8",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
@@ -42,9 +46,11 @@
   "homepage": "https://github.com/scottpreston/react-app#readme",
   "scripts": {
     "start": "http-server -o",
-    "prestart" : "npm run pack",
-    "pack": "webpack", 
+    "prestart": "npm run pack",
+    "pack": "webpack",
+    "watch": "webpack --watch",
     "test": "babel-node node_modules/mocha/bin/_mocha -- test/**/*.js",
-    "cover": "nyc --reporter=html --require babel-register --require babel-polyfill mocha -- test/**/*.js"
+    "cover": "nyc --reporter=html --require babel-register --require babel-polyfill mocha -- test/**/*.js",
+    "sync": "browser-sync start --server --files '**/*.*'"
   }
 }
