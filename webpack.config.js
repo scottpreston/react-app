@@ -1,46 +1,27 @@
-const webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-    entry: './js/app.js',
-    output: {
-        filename: './js/dist/bundle.js'
-    },
-    devtool: 'cheap-module-eval-source-map',
-    plugins: [
-      new webpack.ProvidePlugin({   
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-    })
+  entry: './src/app.js',
+  module: {
+    rules: [
+        {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015','react'] },
+        }],
+      },
+    
+      // Loaders for other file types can go here
     ],
-    module: {
-        loaders: [{
-                test: /.js?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader'
-            }, {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                    modules: true,
-                    localIdentName: '[name]__[local]___[hash:base64:5]'
-                },
-            },
-            {
-                test: /\.(woff2?|svg)$/,
-                loader: 'url-loader?limit=10000&name=/js/dist/[name].[ext]'
-            },
-            {
-                test: /\.(ttf|eot)$/,
-                loader: 'file-loader?name=/js/dist/[name].[ext]'
-            }
-        ]
-    }
-}
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+};
